@@ -1,4 +1,4 @@
- <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class UserModel extends CI_Model {
   public function get($username){
@@ -13,7 +13,7 @@ class UserModel extends CI_Model {
 		return $this->db->get_where('user', ['id_user'=>$id_user])->row_array();
 	}
 	#untuk menampilkan seluruh data di tabel
-	 public function getAllDatapengguna(){
+	public function getAllDatapengguna(){
 		return $this->db->get('login')->result_array();
 	}
 	public function tambahDatapengguna(){
@@ -141,9 +141,12 @@ class UserModel extends CI_Model {
 		$this->db->where('id', $this->input->post('id'));
 		$this->db->update('sparepart', $data);
 	}
- 	public function getDatapart($id){
-	 	return $this->db->get_where('sparepart', ['id'=>$id])->row_array();
-	}
+	public function getDatapart($id){
+		return $this->db->get_where('sparepart', ['id'=>$id])->row_array();
+   }
+   public function getDatapart2($id){
+	return $this->db->get_where('sparepart', ['id'=>$id])->result_array();
+}
  	 public function getAllDatapart(){
 		return $this->db->get('sparepart')->result_array();
 	}
@@ -201,9 +204,12 @@ class UserModel extends CI_Model {
 		$this->db->where('id', $this->input->post('id'));
 		$this->db->update('karyawan', $data);
 	}
- 	public function getDatakaryawan($id){
-	 	return $this->db->get_where('karyawan', ['id'=>$id])->row_array();
-	}
+	public function getDatakaryawan($id){
+		return $this->db->get_where('karyawan', ['id'=>$id])->row_array();
+   }
+   public function getDatakaryawan2($id){
+	return $this->db->get_where('karyawan', ['id'=>$id])->result_array();
+}
  	 public function getAllDatakaryawan(){
 		return $this->db->get('karyawan')->result_array();
 	}
@@ -249,12 +255,80 @@ class UserModel extends CI_Model {
 		$this->db->where('id', $this->input->post('id'));
 		$this->db->update('kendaraan', $data);
 	}
- 	public function getDatakendaraan($id){
-	 	return $this->db->get_where('kendaraan', ['id'=>$id])->row_array();
-	}
+	public function getDatakendaraan($id){
+		return $this->db->get_where('kendaraan', ['id'=>$id])->row_array();
+   }
+   public function getDatakendaraan2($id){
+	return $this->db->get_where('kendaraan', ['id'=>$id])->result_array();
+}
  	 public function getAllDatakendaraan(){
 		return $this->db->get('kendaraan')->result_array();
 	}
 	
+	#untuk detail_part
+	public function tambahDatadetail($image_name){
+			$nama_karyawan = htmlspecialchars($this->input->post('nama_karyawan', ENT_QUOTES, 'UTF-8', true));
+			$nopol = htmlspecialchars($this->input->post('nopol', ENT_QUOTES, 'UTF-8', true));
+			$model_kendaraan = htmlspecialchars($this->input->post('model_kendaraan', ENT_QUOTES, 'UTF-8', true));
+			$vin_rangka = htmlspecialchars($this->input->post('vin_rangka', ENT_QUOTES, 'UTF-8', true));
+			$kilometer = htmlspecialchars($this->input->post('kilometer', ENT_QUOTES, 'UTF-8', true));
+			$tgl_perbaikan = htmlspecialchars($this->input->post('tgl_perbaikan', ENT_QUOTES, 'UTF-8', true));
+			$tgl_penyerahan = htmlspecialchars($this->input->post('tgl_penyerahan', ENT_QUOTES, 'UTF-8', true));
+			$no_part = htmlspecialchars($this->input->post('no_part', ENT_QUOTES, 'UTF-8', true));
+			$barcode = htmlspecialchars($this->input->post('barcode', ENT_QUOTES, 'UTF-8', true));
+			$lpd = htmlspecialchars($this->input->post('lpd', ENT_QUOTES, 'UTF-8', true));	
+			$nama_rak = htmlspecialchars($this->input->post('nama_rak', ENT_QUOTES, 'UTF-8', true));
+			$user_create = htmlspecialchars($this->input->post('user_create', ENT_QUOTES, 'UTF-8', true));
+			$create_date = htmlspecialchars($this->input->post('create_date', ENT_QUOTES, 'UTF-8', true));
+            $data       =  array(   'nama_karyawan'=>$nama_karyawan,
+                                    'nopol'=>$nopol,
+                                    'model_kendaraan'=>$model_kendaraan,
+                                    'vin_rangka'=>$vin_rangka,                                    
+                                    'kilometer'=>$kilometer,
+                                    'tgl_perbaikan'=>$tgl_perbaikan,
+                                    'tgl_penyerahan'=>$tgl_penyerahan,
+                                    'no_part'=>$no_part,
+                                    'barcode'=>$barcode,
+                                    'lpd'=>$lpd,
+                                    'nama_rak'=>$nama_rak,
+                                    'qr_code'   => $image_name,
+                                    'user_create'=>$user_create,
+                                    'create_date'=>$create_date
+                                );
+		$data = $this->security->xss_clean($data);
+		return $this->db->insert('detail', $data);
+	}
+	public function hapusDatadetail($id){
+		$this->db->delete('detail', ['id' => $id]);
+	}
+	public function ubahDatadetail(){
+		$data = [
+			'nama_karyawan' => htmlspecialchars($this->input->post('nama_karyawan', ENT_QUOTES, 'UTF-8', true)),
+			'nopol' => htmlspecialchars($this->input->post('nopol', ENT_QUOTES, 'UTF-8', true)),
+			'model_kendaraan' => htmlspecialchars($this->input->post('model_kendaraan', ENT_QUOTES, 'UTF-8', true)),
+			'vin_rangka' => htmlspecialchars($this->input->post('vin_rangka', ENT_QUOTES, 'UTF-8', true)),
+			'kilometer' => htmlspecialchars($this->input->post('kilometer', ENT_QUOTES, 'UTF-8', true)),
+			'tgl_perbaikan' => htmlspecialchars($this->input->post('tgl_perbaikan', ENT_QUOTES, 'UTF-8', true)),
+			'tgl_penyerahan' => htmlspecialchars($this->input->post('tgl_penyerahan', ENT_QUOTES, 'UTF-8', true)),
+			'no_part' => htmlspecialchars($this->input->post('no_part', ENT_QUOTES, 'UTF-8', true)),
+			'barcode' => htmlspecialchars($this->input->post('barcode', ENT_QUOTES, 'UTF-8', true)),
+			'lpd' => htmlspecialchars($this->input->post('lpd', ENT_QUOTES, 'UTF-8', true)),
+			'nama_rak' => htmlspecialchars($this->input->post('nama_rak', ENT_QUOTES, 'UTF-8', true)),
+			'user_update' => htmlspecialchars($this->input->post('user_update', ENT_QUOTES, 'UTF-8', true)),
+			'update_date' => htmlspecialchars($this->input->post('update_date', ENT_QUOTES, 'UTF-8', true))
+		];
+		$data = $this->security->xss_clean($data);
+		$this->db->where('id', $this->input->post('id'));
+		$this->db->update('detail', $data);
+	}
+	public function getDatadetail($id){
+		return $this->db->get_where('detail', ['id'=>$id])->row_array();
+   }
+   public function getDatadetail2($id){
+	return $this->db->get_where('detail', ['id'=>$id])->result_array();
+}
+ 	 public function getAllDatadetail(){
+		return $this->db->get('detail')->result_array();
+	}
 }
 // select * from (nama_tabel) where (nama_field_yang_akan_difilter) between ‘tanggal awal’ and ‘tanggal akhir’

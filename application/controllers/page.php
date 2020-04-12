@@ -43,6 +43,13 @@ class Page extends MY_Controller {
     $this->load->view('kendaraan',$data);
     $this->load->view('templates/footer');
   }
+    public function detail(){  
+    $data['detail']= $this->UserModel->getAllDatadetail();
+    $this->load->view('templates/header');
+    $this->authenticated();
+    $this->load->view('detail',$data);
+    $this->load->view('templates/footer');
+  }
   public function rak(){  
     $data['rak']= $this->UserModel->getAllDatarak();
     $this->load->view('templates/header');
@@ -56,6 +63,79 @@ class Page extends MY_Controller {
     $this->authenticated();
     $this->load->view('part',$data);
     $this->load->view('templates/footer');
+  }
+  # untuk laporan
+  public function laporan_kendaraan($id_kendaraan)
+  {
+    $data['kendaraan'] = $this->UserModel->getDatakendaraan2($id_kendaraan);
+    $this->load->library('pdf');
+    $this->pdf->setPaper('C7', 'potrait');
+    $this->pdf->filename = "laporan-kendaraan.pdf";
+    $this->pdf->load_view('laporan/laporan_kendaraan', $data);
+  }
+  public function laporan_all_kendaraan()
+  {
+    $data['kendaraan'] = $this->UserModel->getAllDatakendaraan();
+    $this->load->library('pdf');
+    $this->pdf->setPaper('A4', 'potrait');
+    $this->pdf->filename = "laporan-semua-kendaraan.pdf";
+    $this->pdf->load_view('laporan/laporan_all_kendaraan', $data);
+  }
+  public function laporan_sparepart($id_sparepart)
+  {
+    $data['sparepart'] = $this->UserModel->getDatapart2($id_sparepart);
+    $this->load->library('pdf');
+    $this->pdf->setPaper('C7', 'potrait');
+    $this->pdf->filename = "laporan-sparepart.pdf";
+    $this->pdf->load_view('laporan/laporan_sparepart', $data);
+  }
+  public function laporan_all_sparepart()
+  {
+    $data['sparepart'] = $this->UserModel->getAllDatapart();
+    $this->load->library('pdf');
+    $this->pdf->setPaper('A4', 'potrait');
+    $this->pdf->filename = "laporan-semua-sparepart.pdf";
+    $this->pdf->load_view('laporan/laporan_all_sparepart', $data);
+  }
+  public function laporan_karyawan($id_karyawan)
+  {
+    $data['karyawan'] = $this->UserModel->getDatakaryawan2($id_karyawan);
+    $this->load->library('pdf');
+    $this->pdf->setPaper('C7', 'potrait');
+    $this->pdf->filename = "laporan-karyawan.pdf";
+    $this->pdf->load_view('laporan/laporan_karyawan', $data);
+  }
+  public function laporan_all_karyawan()
+  {
+    $data['karyawan'] = $this->UserModel->getAllDatakaryawan();
+    $this->load->library('pdf');
+    $this->pdf->setPaper('A4', 'potrait');
+    $this->pdf->filename = "laporan-semua-karyawan.pdf";
+    $this->pdf->load_view('laporan/laporan_all_karyawan', $data);
+  }
+  public function laporan_all_pengguna()
+  {
+    $data['user'] = $this->UserModel->getAllDatapengguna();
+    $this->load->library('pdf');
+    $this->pdf->setPaper('A4', 'potrait');
+    $this->pdf->filename = "laporan-semua-pengguna.pdf";
+    $this->pdf->load_view('laporan/laporan_all_pengguna', $data);
+  }
+  public function laporan_all_rak()
+  {
+    $data['rak'] = $this->UserModel->getAllDatarak();
+    $this->load->library('pdf');
+    $this->pdf->setPaper('A4', 'potrait');
+    $this->pdf->filename = "laporan-semua-rak.pdf";
+    $this->pdf->load_view('laporan/laporan_all_rak', $data);
+  }
+  public function laporan_all_Detail()
+  {
+    $data['sparepart'] = $this->UserModel->getAllDatapart();
+    $this->load->library('pdf');
+    $this->pdf->setPaper('A4', 'potrait');
+    $this->pdf->filename = "laporan-semua-sparepart.pdf";
+    $this->pdf->load_view('laporan/laporan_all_sparepart', $data);
   }
   # untuk Pengguna
   public function pengguna_tambah(){
@@ -111,9 +191,9 @@ class Page extends MY_Controller {
         $config['white']        = array(70,130,180); // array, default is array(0,0,0)
         $this->ciqrcode->initialize($config);
         
-        $image_name=$nama_pegawai.'.png'; //buat name dari qr code sesuai dengan nama_karyawan
+        $image_name=$nama_karyawan.'.png'; //buat name dari qr code sesuai dengan nama_karyawan
  
-        $params['data'] = $nama_pegawai; //data yang akan di jadikan QR CODE
+        $params['data'] = $nama_karyawan; //data yang akan di jadikan QR CODE
         $params['level'] = 'H'; //H=High
         $params['size'] = 10;
         $params['savename'] = FCPATH.$config['imagedir'].$image_name; //simpan image QR CODE ke folder assets/images/
@@ -191,7 +271,7 @@ class Page extends MY_Controller {
     $this->session->set_flashdata('flash_sukses', 'BERHASIL diubah');
     redirect('page/kendaraan');
   }
-   # untuk Zona
+   # untuk Rak
   public function rak_tambah(){
         $no_rak=$this->input->post('no_rak');
         $nama_rak=$this->input->post('nama_rak');
@@ -287,4 +367,59 @@ class Page extends MY_Controller {
     redirect('page/part');
   }
 
+   # untuk detail
+  public function detail_tambah(){
+        $nama_karyawan=$this->input->post('nama_karyawan');
+        $nopol=$this->input->post('nopol');
+        $model_kendaraan=$this->input->post('model_kendaraan');
+        $vin_rangka=$this->input->post('vin_rangka');
+        $kilometer=$this->input->post('kilometer');
+        $tgl_perbaikan=$this->input->post('tgl_perbaikan');
+        $tgl_penyerahan=$this->input->post('tgl_penyerahan');
+        $no_part=$this->input->post('no_part');
+        $barcode=$this->input->post('barcode');
+        $lpd=$this->input->post('lpd');
+        $qr_code=$this->input->post('qr_code');
+
+ 
+        $this->load->library('ciqrcode'); //pemanggilan library QR CODE
+ 
+        $config['cacheable']    = true; //boolean, the default is true
+        $config['cachedir']     = './assets/'; //string, the default is application/cache/
+        $config['errorlog']     = './assets/'; //string, the default is application/logs/
+        $config['imagedir']     = './assets/images/'; //direktori penyimpanan qr code
+        $config['quality']      = true; //boolean, the default is true
+        $config['size']         = '1024'; //interger, the default is 1024
+        $config['black']        = array(224,255,255); // array, default is array(255,255,255)
+        $config['white']        = array(70,130,180); // array, default is array(0,0,0)
+        $this->ciqrcode->initialize($config);
+        
+        $image_name=$model_kendaraan.'.png'; //buat name dari qr code sesuai dengan model_kendaraan
+ 
+        $params['data'] = $model_kendaraan; //data yang akan di jadikan QR CODE
+        $params['level'] = 'H'; //H=High
+        $params['size'] = 10;
+        $params['savename'] = FCPATH.$config['imagedir'].$image_name; //simpan image QR CODE ke folder assets/images/
+        $this->ciqrcode->generate($params); // fungsi untuk generate QR CODE
+        $this->UserModel->tambahDatadetail($image_name);
+        $this->session->set_flashdata('flash_sukses', 'BERHASIL ditambahkan');
+        redirect('page/detail');
+  }
+  public function detail_hapus($id_user){
+
+    $this->UserModel->hapusDatadetail($id_user);
+    $this->session->set_flashdata('flash_sukses', 'BERHASIL dihapus');
+    redirect('page/detail');
+  }
+    public function detail_ubah($id_user){
+    $data['detail'] = $this->UserModel->getDatadetail($id_user);
+    $this->load->view('templates/header');
+    $this->load->view('detail_ubah', $data);
+    $this->load->view('templates/footer');
+  }
+  public function detail_edit(){
+    $this->UserModel->ubahDatadetail();
+    $this->session->set_flashdata('flash_sukses', 'BERHASIL diubah');
+    redirect('page/detail');
+  }
 }

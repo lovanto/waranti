@@ -132,7 +132,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <h6 class="dropdown-header">Transaksi Data</h6>
-          <a class="dropdown-item" href="<?php echo base_url('page/checker');?>">Backup Detail Part</a>
+          <a class="dropdown-item" href="<?php echo base_url('page/detail');?>">Backup Detail Part</a>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -141,10 +141,11 @@
             <span>Laporan</span></a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
               <h6 class="dropdown-header">Laporan Master :</h6>
-                <a class="dropdown-item fa fa-folder" href="<?php echo base_url('page/cariPelanggan'); ?>">Laporan kendaraan</a>
-                <a class="dropdown-item fa fa-save" href="<?php echo base_url('page/cari'); ?>">Laporan Sparepart</a>
-                <a class="dropdown-item fa fa-user-circle" href="<?php echo base_url('page/cariZona'); ?>">Laporan karyawan</a>
-                <a class="dropdown-item fa fa-user" href="<?php echo base_url('page/cariZona'); ?>">Laporan pengguna</a>
+                <a class="dropdown-item fa fa-folder" href="<?php echo base_url('page/laporan_all_kendaraan'); ?>">Laporan Kendaraan</a>
+                <a class="dropdown-item fa fa-user" href="<?php echo base_url('page/laporan_all_rak'); ?>">Laporan Rak</a>
+                <a class="dropdown-item fa fa-save" href="<?php echo base_url('page/laporan_all_sparepart'); ?>">Laporan Sparepart</a>
+                <a class="dropdown-item fa fa-user-circle" href="<?php echo base_url('page/laporan_all_karyawan'); ?>">Laporan Karyawan</a>
+                <a class="dropdown-item fa fa-user" href="<?php echo base_url('page/laporan_all_pengguna'); ?>">Laporan Pengguna</a>
               <h6 class="dropdown-header">Laporan Transaksi :</h6>
                 <a class="dropdown-item fa fa-envelope" href="<?php echo base_url('page/cariCekMeteran'); ?>">Laporan Detail Part</a>
             </div>

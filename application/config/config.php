@@ -2,6 +2,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 date_default_timezone_set("Asia/Jakarta");
 
+$config['composer_autoload'] = "vendor/autoload.php"; // untuk laporan html to pdf
+
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
