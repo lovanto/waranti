@@ -70,15 +70,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | The $query_builder variables lets you determine whether or not to load
 | the query builder class.
 */
+
+// Created!
+// You have successfully created a new database. The details are below.
+
+// Username: nGjhEKRzR4
+
+// Database name: nGjhEKRzR4
+
+// Password: 3A8j9GpW01
+
+// Server: remotemysql.com
+
+// Port: 3306
+
+// These are the username and password to log in to your database and phpMyAdmin
+
+// Make sure you keep your password secure. Ensure you keep back ups of your database in case it gets deleted.
+
 $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'waranti_db',
+	'hostname' => 'remotemysql.com',
+	'username' => 'nGjhEKRzR4',
+	'password' => '3A8j9GpW01',
+	'database' => 'nGjhEKRzR4',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
