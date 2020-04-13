@@ -14,7 +14,7 @@ class Auth extends MY_Controller {
 			redirect('page/welcome'); // Redirect ke page home
 
 		// function render_login tersebut dari file core/MY_Controller.php
-		$this->load->view('login'); // Load view login.php
+		$this->load->view('welcome'); // Load view login.php
 	}
 
 	public function login(){
