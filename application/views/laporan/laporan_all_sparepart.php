@@ -8,7 +8,8 @@ $this->session->userdata('authenticated')
 <head></head>
 
 <body style="font-size: 10px;">
-    <table border="1" width="100%">
+<h2 style="text-align: center">Laporan Semua Sparepart</h2>
+        <table border="1" style="width: 100%; margin-top: 20px;">
         <thead>
             <tr>
                 <td style="padding: 10px;">No.</td>

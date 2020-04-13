@@ -9,8 +9,9 @@ $this->session->userdata('authenticated')
 
 <body style="font-size: 10px;">
     <br>
+    <h2 style="text-align: center">Laporan Semua Detail Sparepart</h2>
     <?php foreach ($sparepart as $s) : ?>
-        <table border="1">
+        <table border="1" style="margin-top: 20px;">
             <tr>
                 <td style="padding: 15px;">Dealer: awdwadwadaw</td>
                 <td style="padding: 15px;">Part No: <?= $s['no_part'] ?></td>

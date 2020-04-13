@@ -8,7 +8,8 @@ $this->session->userdata('authenticated')
 <head></head>
 
 <body style="font-size: 10px;">
-    <table border="1" width="100%">
+<h2 style="text-align: center">Laporan Semua Karyawan</h2>
+        <table border="1" width="100%" style="width: 100%; margin-top: 20px;">
         <thead>
             <tr>
                 <td style="padding: 10px;">No.</td>
@@ -16,7 +17,7 @@ $this->session->userdata('authenticated')
                 <td style="padding: 10px;">Nama Lengkap</td>
                 <td style="padding: 10px;">Kelamin</td>
                 <td style="padding: 10px;">Tanggal Lahir</td>
-                <td style="padding: 10px;">Alamat</td>
+                <td style="padding: 10px; width: 20px;">Alamat</td>
                 <td style="padding: 10px;">No. Telp</td>
                 <td style="padding: 10px;">No. KTP</td>
                 <td style="padding: 10px;">Status Karyawan</td>

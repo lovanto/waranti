@@ -5,12 +5,12 @@ $this->session->userdata('authenticated')
 
 <html>
 <head></head>
-<body style="font-size: 10px;">
+<body style="font-size: 6px;">
 <br>
     <table>
-    <?php foreach ($karyawan as $s) :?>
+        <?php foreach ($karyawan as $s) : ?>
             <tr>
-                <td colspan="3"><img src="<?php echo FCPATH.'assets/images/logo.png'?>" width="30px"> &nbsp;&nbsp;&nbsp;&nbsp; Data Karyawan</td>
+                <td colspan="3"><img src="<?php echo FCPATH.'assets/images/logo.png'?>" style="width: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp; Data Kendaraan</td>
             </tr>
             <tr><td colspan="3"><hr></td></tr>
             <tr>

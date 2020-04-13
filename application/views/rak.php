@@ -72,7 +72,7 @@ $this->session->userdata('authenticated')
                     <td class="text-middle"><?= $s['create_date']; ?></td>
                     <td class="text-middle"><?= $s['user_update']; ?></td>
                     <td class="text-middle"><?= $s['update_date']; ?></td>
-                    <td class="text-center text-middle"><a href="<?= base_url('page/rak_ubah') ?>/<?= $s['id']; ?>" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit text-success"></i></a> | <a href="<?= base_url('page/rak_hapus') ?>/<?= $s['id']; ?>" class="tombol_hapus" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash text-danger"></i></a>
+                    <td class="text-center text-middle"><a href="<?= base_url('page/rak_ubah') ?>/<?= $s['id']; ?>" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit text-success"></i></a> | <a href="<?= base_url('page/rak_hapus') ?>/<?= $s['id']; ?>" class="tombol_hapus" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash text-danger"></i></a> | <a href="<?= base_url('page/laporan_rak') ?>/<?= $s['id']; ?>" data-toggle="tooltip" data-placement="top" title="Cetak"><i class="fas fa-print text-success"></i></a>
                     </td>
                   </tr>
                 <?php endforeach; ?>

@@ -103,9 +103,12 @@ class UserModel extends CI_Model {
 		$this->db->where('id', $this->input->post('id'));
 		$this->db->update('rak', $data);
 	}
- 	public function getDatarak($id){
-	 	return $this->db->get_where('rak', ['id'=>$id])->row_array();
-	}
+	public function getDatarak($id){
+		return $this->db->get_where('rak', ['id'=>$id])->row_array();
+   }
+   public function getDatarak2($id){
+	return $this->db->get_where('rak', ['id'=>$id])->result_array();
+}
  	 public function getAllDatarak(){
 		return $this->db->get('rak')->result_array();
 	}

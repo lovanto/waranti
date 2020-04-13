@@ -7,7 +7,7 @@ $this->session->userdata('authenticated')
 
 <head></head>
 
-<body style="font-size: 10px;">
+<body style="font-size: 6.5px;">
     <br>
     <table border="1">
         <?php foreach ($part as $s) :?>
