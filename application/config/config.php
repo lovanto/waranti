@@ -27,7 +27,6 @@ $config['composer_autoload'] = "vendor/autoload.php"; // untuk laporan html to p
 |
 */
 $config['base_url'] = "https://warantipart.herokuapp.com/";
-$config['base_url'] .= preg_replace('@/+$@','',dirname($_SERVER['SCRIPT_NAME'])).'/';
 
 /*
 |--------------------------------------------------------------------------
