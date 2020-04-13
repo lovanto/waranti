@@ -62,14 +62,11 @@
     <!-- Navbar Search -->
     <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
       <div class="input-group">
-       <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="fa fa-user-circle"></i>
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$_SESSION['nama_user']?></span>
                 <!-- <img class="img-profile rounded-circle" src=""> -->
               </a>
-             
-            </li>
         <div class="input-group-append">
         </div>
       </div>
@@ -147,7 +144,7 @@
                 <a class="dropdown-item fa fa-user-circle" href="<?php echo base_url('page/laporan_all_karyawan'); ?>">Laporan Karyawan</a>
                 <a class="dropdown-item fa fa-user" href="<?php echo base_url('page/laporan_all_pengguna'); ?>">Laporan Pengguna</a>
               <h6 class="dropdown-header">Laporan Transaksi :</h6>
-                <a class="dropdown-item fa fa-envelope" href="<?php echo base_url('page/cariCekMeteran'); ?>">Laporan Detail Part</a>
+                <a class="dropdown-item fa fa-envelope" href="<?php echo base_url('page/laporan_all_detail'); ?>">Laporan Detail Part</a>
             </div>
       </li> 
       <li class="nav-item">

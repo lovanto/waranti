@@ -134,8 +134,8 @@ class Page extends MY_Controller {
     $data['sparepart'] = $this->UserModel->getAllDatapart();
     $this->load->library('pdf');
     $this->pdf->setPaper('A4', 'potrait');
-    $this->pdf->filename = "laporan-semua-sparepart.pdf";
-    $this->pdf->load_view('laporan/laporan_all_sparepart', $data);
+    $this->pdf->filename = "laporan-semua-detail.pdf";
+    $this->pdf->load_view('laporan/laporan_all_detail', $data);
   }
   # untuk Pengguna
   public function pengguna_tambah(){

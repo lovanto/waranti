@@ -9,8 +9,8 @@ $this->session->userdata('authenticated')
 
 <body style="font-size: 10px;">
     <br>
-    <table border="1">
-        <?php foreach ($part as $s) :?>
+    <?php foreach ($sparepart as $s) : ?>
+        <table border="1">
             <tr>
                 <td style="padding: 15px;">Dealer: awdwadwadaw</td>
                 <td style="padding: 15px;">Part No: <?= $s['no_part'] ?></td>
@@ -38,10 +38,11 @@ $this->session->userdata('authenticated')
                     <br><?= $s['deskripsi'] ?>
                 </td>
             </tr>
-        <?php endforeach; ?>
-    </table>
-    <br><br><br>
-    <div style="margin-block: 30px;"><?= $this->session->userdata('nama_user'); ?></div>
+        </table>
+        <br><br><br>
+    <?php endforeach; ?>
+    <br><br><br><br>
+    <div><?= $this->session->userdata('nama_user'); ?></div>
 </body>
 
 </html>
