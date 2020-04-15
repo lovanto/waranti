@@ -51,6 +51,9 @@ $this->session->userdata('authenticated')
               <input type="hidden" class="form-control" id="user_create" name="user_create" value="<?= $this->session->userdata('nama_user'); ?>" required>
               <input name="create_date" type="hidden" id="create_date" value=" <?php echo date('Y-m-d'); ?> " readonly>
             </div>
+            <div class="card-footer">
+              <b><a href="<?= base_url('page/form?id=karyawan'); ?>">import data</a></b>
+            </div>
             <button type="submit" class="btn btn-primary"><i class="fas fa-save">&nbsp;&nbsp;Simpan</i></button>
           </form>
         </div>
