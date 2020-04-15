@@ -7,10 +7,72 @@ class UserModel extends CI_Model {
     return $result;
    }
 
+   //laporan
+   public function laporan_all_kendaraan($keyword){
+	$this->db->like('model', $keyword)->or_like('nopol', $keyword);
+	return $this->db->get('kendaraan')->result();
+
+	$this->load->library('pagination'); // Load librari paginationnya
+	
+	$config['base_url'] = base_url('page/pembayaran?metode=1');
+	$config['total_rows'] = $this->db->query($query)->num_rows();
+	$config['per_page'] = 5;
+	$config['uri_segment'] = 3;
+	$config['num_links'] = 3;
+	
+	// Style Pagination
+	// Agar bisa mengganti stylenya sesuai class2 yg ada di bootstrap
+	$config['full_tag_open']   = '<ul class="pagination pagination-sm m-t-xs m-b-xs">';
+	$config['full_tag_close']  = '</ul>';
+	
+	$config['first_link']      = 'First'; 
+	$config['first_tag_open']  = '<li>';
+	$config['first_tag_close'] = '</li>';
+	
+	$config['last_link']       = 'Last'; 
+	$config['last_tag_open']   = '<li>';
+	$config['last_tag_close']  = '</li>';
+	
+	$config['next_link']       = '&nbsp;<i class="glyphicon glyphicon-menu-right"></i>&nbsp;'; 
+	$config['next_tag_open']   = '<li>';
+	$config['next_tag_close']  = '</li>';
+	
+	$config['prev_link']       = '&nbsp;<i class="glyphicon glyphicon-menu-left"></i>&nbsp;'; 
+	$config['prev_tag_open']   = '<li>';
+	$config['prev_tag_close']  = '</li>';
+	
+	$config['cur_tag_open']    = '<li class="active"><a href="#">';
+	$config['cur_tag_close']   = '</a></li>';
+	 
+	$config['num_tag_open']    = '<li>';
+	$config['num_tag_close']   = '</li>';
+	// End style pagination
+	
+	$this->pagination->initialize($config); // Set konfigurasi paginationnya
+	
+	$page = ($this->uri->segment($config['uri_segment'])) ? $this->uri->segment($config['uri_segment']) : 0;
+	$query .= " LIMIT ".$page.", ".$config['per_page'];
+	
+	$data['limit'] = $config['per_page'];
+	$data['total_rows'] = $config['total_rows'];
+	$data['pagination'] = $this->pagination->create_links(); // Generate link pagination nya sesuai config diatas
+	$data['pembayaran'] = $this->db->query($query)->result();
+	
+	return $data;
+  }
+
 	#untuk pengguna
 	#digunakan untuk mengambil data saat edit dan hapus
 	public function getDatapengguna($id_user){
 		return $this->db->get_where('user', ['id_user'=>$id_user])->row_array();
+	}
+	public function getDatapengguna2($id){
+		if($id != NULL){
+			$this->db->like('username', $id)->or_like('nama_user', $id);
+			return $this->db->get('user')->result_array();
+	   }else{
+		   return $this->db->get('user')->result_array();
+	   }
 	}
 	#untuk menampilkan seluruh data di tabel
 	public function getAllDatapengguna(){
@@ -109,6 +171,14 @@ class UserModel extends CI_Model {
    public function getDatarak2($id){
 	return $this->db->get_where('rak', ['id'=>$id])->result_array();
 }
+public function getDatarak3($id){
+	if($id != NULL){
+		 $this->db->like('no_rak', $id)->or_like('nama_rak', $id);
+		 return $this->db->get('rak')->result_array();
+	}else{
+		return $this->db->get('rak')->result_array();
+	}
+ }
  	 public function getAllDatarak(){
 		return $this->db->get('rak')->result_array();
 	}
@@ -149,6 +219,14 @@ class UserModel extends CI_Model {
    }
    public function getDatapart2($id){
 	return $this->db->get_where('sparepart', ['id'=>$id])->result_array();
+}
+public function getDatapart3($id){
+	if($id != NULL){
+		$this->db->like('no_part', $id)->or_like('deskripsi', $id);
+		return $this->db->get('sparepart')->result_array();
+   }else{
+	   return $this->db->get('sparepart')->result_array();
+   }
 }
  	 public function getAllDatapart(){
 		return $this->db->get('sparepart')->result_array();
@@ -213,6 +291,14 @@ class UserModel extends CI_Model {
    public function getDatakaryawan2($id){
 	return $this->db->get_where('karyawan', ['id'=>$id])->result_array();
 }
+public function getDatakaryawan3($id){
+	if($id != NULL){
+		$this->db->like('npk', $id)->or_like('nama_karyawan', $id);
+		return $this->db->get('karyawan')->result_array();
+   }else{
+	   return $this->db->get('karyawan')->result_array();
+   }
+}
  	 public function getAllDatakaryawan(){
 		return $this->db->get('karyawan')->result_array();
 	}
@@ -262,8 +348,21 @@ class UserModel extends CI_Model {
 		return $this->db->get_where('kendaraan', ['id'=>$id])->row_array();
    }
    public function getDatakendaraan2($id){
-	return $this->db->get_where('kendaraan', ['id'=>$id])->result_array();
-}
+	if($id != NULL){
+		 $this->db->like('model', $id)->or_like('nopol', $id);
+		 return $this->db->get('kendaraan')->result_array();
+	}else{
+		 return $this->db->get('kendaraan')->result_array();
+	}
+ }
+ public function getDatakendaraan3($id){
+	if($id != NULL){
+		 $this->db->like('model', $id)->or_like('nopol', $id);
+		 return $this->db->get('kendaraan')->result_array();
+	}else{
+		 return $this->db->get('kendaraan')->result_array();
+	}
+ }
  	 public function getAllDatakendaraan(){
 		return $this->db->get('kendaraan')->result_array();
 	}
@@ -330,6 +429,14 @@ class UserModel extends CI_Model {
    public function getDatadetail2($id){
 	return $this->db->get_where('detail', ['id'=>$id])->result_array();
 }
+public function getDatadetail3($id){
+	if($id != NULL){
+		 $this->db->like('nama_karyawan', $id)->or_like('nopol', $id);
+		 return $this->db->get('detail')->result_array();
+	}else{
+		 return $this->db->get('detail')->result_array();
+	}
+ }
  	 public function getAllDatadetail(){
 		return $this->db->get('detail')->result_array();
 	}

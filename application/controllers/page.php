@@ -95,15 +95,21 @@ class Page extends MY_Controller
   }
   public function laporan_all_kendaraan()
   {
-    ob_start();
-    $data['kendaraan'] = $this->UserModel->getAllDatakendaraan();
-    $this->load->view('laporan/laporan_all_kendaraan', $data);
-    $html = ob_get_contents();
-    ob_end_clean();
-    require_once(FCPATH.'assets/html2pdf/html2pdf.class.php');
-    $pdf = new HTML2PDF('P', 'A4', 'en');
-    $pdf->WriteHTML($html);
-    $pdf->Output('laporan-semua-kendaraan.pdf', 'D');
+    $keyword = $this->input->get('cari', TRUE);
+    $data['kendaraan'] = $this->UserModel->getDatakendaraan3($keyword); //mencari data karyawan berdasarkan 
+    $this->load->view('templates/header');
+    $this->load->view('laporan/laporan_all_kendaraan', $data); //menampilkan data yang sudah dicari
+    $this->load->view('templates/footer');
+    
+    // ob_start();
+    // $data['kendaraan'] = $this->UserModel->getAllDatakendaraan();
+    // $this->load->view('laporan/laporan_all_kendaraan', $data);
+    // $html = ob_get_contents();
+    // ob_end_clean();
+    // require_once(FCPATH.'assets/html2pdf/html2pdf.class.php');
+    // $pdf = new HTML2PDF('P', 'A4', 'en');
+    // $pdf->WriteHTML($html);
+    // $pdf->Output('laporan-semua-kendaraan.pdf', 'D');
 
     // $data['kendaraan'] = $this->UserModel->getAllDatakendaraan();
     // $this->load->library('pdf');
@@ -131,15 +137,21 @@ class Page extends MY_Controller
   }
   public function laporan_all_sparepart()
   {
-    ob_start();
-    $data['sparepart'] = $this->UserModel->getAllDatapart();
-    $this->load->view('laporan/laporan_all_sparepart', $data);
-    $html = ob_get_contents();
-    ob_end_clean();
-    require_once(FCPATH.'assets/html2pdf/html2pdf.class.php');
-    $pdf = new HTML2PDF('P', 'A4', 'en');
-    $pdf->WriteHTML($html);
-    $pdf->Output('laporan-semua-sparepart.pdf', 'D');
+    $keyword = $this->input->get('cari', TRUE);
+    $data['sparepart'] = $this->UserModel->getDatapart3($keyword); //mencari data karyawan berdasarkan 
+    $this->load->view('templates/header');
+    $this->load->view('laporan/laporan_all_sparepart', $data); //menampilkan data yang sudah dicari
+    $this->load->view('templates/footer');
+
+    // ob_start();
+    // $data['sparepart'] = $this->UserModel->getAllDatapart();
+    // $this->load->view('laporan/laporan_all_sparepart', $data);
+    // $html = ob_get_contents();
+    // ob_end_clean();
+    // require_once(FCPATH.'assets/html2pdf/html2pdf.class.php');
+    // $pdf = new HTML2PDF('P', 'A4', 'en');
+    // $pdf->WriteHTML($html);
+    // $pdf->Output('laporan-semua-sparepart.pdf', 'D');
 
     // $data['sparepart'] = $this->UserModel->getAllDatapart();
     // $this->load->library('pdf');
@@ -167,15 +179,21 @@ class Page extends MY_Controller
   }
   public function laporan_all_karyawan()
   {
-    ob_start();
-    $data['karyawan'] = $this->UserModel->getAllDatakaryawan();
-    $this->load->view('laporan/laporan_all_karyawan', $data);
-    $html = ob_get_contents();
-    ob_end_clean();
-    require_once(FCPATH.'assets/html2pdf/html2pdf.class.php');
-    $pdf = new HTML2PDF('L', 'A4', 'en');
-    $pdf->WriteHTML($html);
-    $pdf->Output('laporan-semua-karyawan.pdf', 'D');
+    $keyword = $this->input->get('cari', TRUE);
+    $data['karyawan'] = $this->UserModel->getDatakaryawan3($keyword); //mencari data karyawan berdasarkan 
+    $this->load->view('templates/header');
+    $this->load->view('laporan/laporan_all_karyawan', $data); //menampilkan data yang sudah dicari
+    $this->load->view('templates/footer');
+
+    // ob_start();
+    // $data['karyawan'] = $this->UserModel->getAllDatakaryawan();
+    // $this->load->view('laporan/laporan_all_karyawan', $data);
+    // $html = ob_get_contents();
+    // ob_end_clean();
+    // require_once(FCPATH.'assets/html2pdf/html2pdf.class.php');
+    // $pdf = new HTML2PDF('L', 'A4', 'en');
+    // $pdf->WriteHTML($html);
+    // $pdf->Output('laporan-semua-karyawan.pdf', 'D');
 
     // $data['karyawan'] = $this->UserModel->getAllDatakaryawan();
     // $this->load->library('pdf');
@@ -185,15 +203,21 @@ class Page extends MY_Controller
   }
   public function laporan_all_pengguna()
   {
-    ob_start();
-    $data['user'] = $this->UserModel->getAllDatapengguna();
-    $this->load->view('laporan/laporan_all_pengguna', $data);
-    $html = ob_get_contents();
-    ob_end_clean();
-    require_once(FCPATH.'assets/html2pdf/html2pdf.class.php');
-    $pdf = new HTML2PDF('P', 'A4', 'en');
-    $pdf->WriteHTML($html);
-    $pdf->Output('laporan-semua-pengguna.pdf', 'D');
+    $keyword = $this->input->get('cari', TRUE);
+    $data['user'] = $this->UserModel->getDatapengguna2($keyword); //mencari data karyawan berdasarkan 
+    $this->load->view('templates/header');
+    $this->load->view('laporan/laporan_all_pengguna', $data); //menampilkan data yang sudah dicari
+    $this->load->view('templates/footer');
+
+    // ob_start();
+    // $data['user'] = $this->UserModel->getAllDatapengguna();
+    // $this->load->view('laporan/laporan_all_pengguna', $data);
+    // $html = ob_get_contents();
+    // ob_end_clean();
+    // require_once(FCPATH.'assets/html2pdf/html2pdf.class.php');
+    // $pdf = new HTML2PDF('P', 'A4', 'en');
+    // $pdf->WriteHTML($html);
+    // $pdf->Output('laporan-semua-pengguna.pdf', 'D');
 
     // $data['user'] = $this->UserModel->getAllDatapengguna();
     // $this->load->library('pdf');
@@ -221,15 +245,21 @@ class Page extends MY_Controller
   }
   public function laporan_all_rak()
   {
-    ob_start();
-    $data['rak'] = $this->UserModel->getAllDatarak();
-    $this->load->view('laporan/laporan_all_rak', $data);
-    $html = ob_get_contents();
-    ob_end_clean();
-    require_once(FCPATH.'assets/html2pdf/html2pdf.class.php');
-    $pdf = new HTML2PDF('P', 'A4', 'en');
-    $pdf->WriteHTML($html);
-    $pdf->Output('laporan-semua-rak.pdf', 'D');
+    $keyword = $this->input->get('cari', TRUE);
+    $data['rak'] = $this->UserModel->getDatarak3($keyword); //mencari data karyawan berdasarkan 
+    $this->load->view('templates/header');
+    $this->load->view('laporan/laporan_all_rak', $data); //menampilkan data yang sudah dicari
+    $this->load->view('templates/footer');
+
+    // ob_start();
+    // $data['rak'] = $this->UserModel->getAllDatarak();
+    // $this->load->view('laporan/laporan_all_rak', $data);
+    // $html = ob_get_contents();
+    // ob_end_clean();
+    // require_once(FCPATH.'assets/html2pdf/html2pdf.class.php');
+    // $pdf = new HTML2PDF('P', 'A4', 'en');
+    // $pdf->WriteHTML($html);
+    // $pdf->Output('laporan-semua-rak.pdf', 'D');
 
     // $data['rak'] = $this->UserModel->getAllDatarak();
     // $this->load->library('pdf');
@@ -237,17 +267,41 @@ class Page extends MY_Controller
     // $this->pdf->filename = "laporan-semua-rak.pdf";
     // $this->pdf->load_view('laporan/laporan_all_rak', $data);
   }
-  public function laporan_all_Detail()
+  public function laporan_detail($id_detail)
   {
     ob_start();
-    $data['sparepart'] = $this->UserModel->getAllDatapart();
-    $this->load->view('laporan/laporan_all_detail', $data);
+    $data['detail'] = $this->UserModel->getDatadetail2($id_detail);
+    $this->load->view('laporan/laporan_detail', $data);
     $html = ob_get_contents();
     ob_end_clean();
     require_once(FCPATH.'assets/html2pdf/html2pdf.class.php');
-    $pdf = new HTML2PDF('P', 'A4', 'en');
+    $pdf = new HTML2PDF('P', 'C8', 'en');
     $pdf->WriteHTML($html);
-    $pdf->Output('laporan-semua-detail.pdf', 'D');
+    $pdf->Output('laporan-detail.pdf', 'D');
+    
+    // $data['karyawan'] = $this->UserModel->getDatakaryawan2($id_karyawan);
+    // $this->load->library('pdf');
+    // $this->pdf->setPaper('C7', 'potrait');
+    // $this->pdf->filename = "laporan-karyawan.pdf";
+    // $this->pdf->load_view('laporan/laporan_karyawan', $data);
+  }
+  public function laporan_all_Detail()
+  {
+    $keyword = $this->input->get('cari', TRUE);
+    $data['detail'] = $this->UserModel->getDatadetail3($keyword); //mencari data karyawan berdasarkan 
+    $this->load->view('templates/header');
+    $this->load->view('laporan/laporan_all_detail', $data); //menampilkan data yang sudah dicari
+    $this->load->view('templates/footer');
+
+    // ob_start();
+    // $data['sparepart'] = $this->UserModel->getAllDatapart();
+    // $this->load->view('laporan/laporan_all_detail', $data);
+    // $html = ob_get_contents();
+    // ob_end_clean();
+    // require_once(FCPATH.'assets/html2pdf/html2pdf.class.php');
+    // $pdf = new HTML2PDF('P', 'A4', 'en');
+    // $pdf->WriteHTML($html);
+    // $pdf->Output('laporan-semua-detail.pdf', 'D');
 
     // $data['sparepart'] = $this->UserModel->getAllDatapart();
     // $this->load->library('pdf');
