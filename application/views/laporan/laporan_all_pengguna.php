@@ -67,10 +67,6 @@
                     <th>Username</th>
                     <th>Nama Lengkap</th>
                     <th>Hak Akses</th>
-                    <th>User Create</th>
-                    <th>Create Date</th>
-                    <th>User Update</th>
-                    <th>Update Date</th>
                 </tr>
                 <?php
                 if (count($user) > 0) {
@@ -95,10 +91,6 @@
                                 }
                                 ?>
                             </td>
-                            <td><?php echo $k['user_create']; ?></td>
-                            <td><?php echo $k['create_date']; ?></td>
-                            <td><?php echo $k['user_update']; ?></td>
-                            <td><?php echo $k['update_date']; ?></td>
                         </tr>
                     <?php endforeach;
                 } else { ?>

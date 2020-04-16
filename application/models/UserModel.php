@@ -488,9 +488,22 @@ class UserModel extends CI_Model
 			return $this->db->get('detail')->result_array();
 		}
 	}
+	public function getDatadetail4($id, $user)
+	{
+		if ($id != NULL) {
+			$this->db->like('tgl_perbaikan', $id)->or_like('nopol', $id);
+			return $this->db->get_where('detail', ['user_create' => $user])->result_array();
+		} else {
+			return $this->db->get_where('detail', ['user_create' => $user])->result_array();
+		}
+	}
 	public function getAllDatadetail()
 	{
 		return $this->db->get('detail')->result_array();
+	}
+	public function getAllDatadetail2($user)
+	{
+		return $this->db->get_where('detail', ['user_create' => $user])->result_array();
 	}
 	#import data
 	public function insert_multiple($data)

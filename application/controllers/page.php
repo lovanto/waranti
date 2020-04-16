@@ -345,7 +345,7 @@ class Page extends MY_Controller
   public function karyawan_tambah()
   {
     $npk = $this->input->post('npk');
-    $nama_pegawai = $this->input->post('nama_pegawai');
+    $nama_karyawan = $this->input->post('nama_karyawan');
     $jk = $this->input->post('jk');
     $tgl_lahir = $this->input->post('tgl_lahir');
     $alamat = $this->input->post('alamat');
@@ -370,8 +370,8 @@ class Page extends MY_Controller
     $this->ciqrcode->initialize($config);
 
     $image_name = $nama_karyawan . '.png'; //buat name dari qr code sesuai dengan nama_karyawan
-
-    $params['data'] = $nama_karyawan; //data yang akan di jadikan QR CODE
+    $ind = ' ';
+    $params['data'] = $npk.$ind.$nama_karyawan.$ind.$jk.$ind.$tgl_lahir.$ind.$alamat.$ind.$no_telp; //data yang akan di jadikan QR CODE
     $params['level'] = 'H'; //H=High
     $params['size'] = 10;
     $params['savename'] = FCPATH . $config['imagedir'] . $image_name; //simpan image QR CODE ke folder assets/images/
@@ -696,8 +696,8 @@ class Page extends MY_Controller
         $this->ciqrcode->initialize($config);
 
         $image_name = $row['A'] . '.png'; //buat name dari qr code sesuai dengan nama_karyawan
-
-        $params['data'] = $row['A']; //data yang akan di jadikan QR CODE
+        $ind = '  ';
+        $params['data'] = $row['A'] .$ind. $row['B']. $ind. $row['C'] .$ind. $row['D'] .$ind. $row['E'].$ind. $row['F']; //data yang akan di jadikan QR CODE
         $params['level'] = 'H'; //H=High
         $params['size'] = 10;
         $params['savename'] = FCPATH . $config['imagedir'] . $image_name; //simpan image QR CODE ke folder assets/images/

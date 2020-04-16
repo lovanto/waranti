@@ -28,7 +28,7 @@ $this->session->userdata('authenticated')
                 <td style="padding: 5px;">LPD: <?= $s['lpd'] ?></td>
             </tr>
             <tr>
-                <td style="padding: 5px;" align="center"><img style="width: 50px;" src="<?php echo FCPATH . 'assets/images/' . $s['qr_code']; ?>"></td>
+                <td style="padding: 5px;" align="center"><img style="width: 60px;" src="<?php echo FCPATH . 'assets/images/' . $s['qr_code']; ?>"></td>
                 <td style="padding: 5px; width: 100px; padding-right: -3px;">
                     Nama Rak: <?= $s['nama_rak'] ?><br><br>
                     <?php

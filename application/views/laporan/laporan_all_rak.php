@@ -66,10 +66,6 @@
           <th>No</th>
           <th>Nomor Rak</th>
           <th>Nama Rak</th>
-          <th>User Create</th>
-          <th>Create Date</th>
-          <th>User Update</th>
-          <th>Update Date</th>
           <th>QR Code</th>
         </tr>
         <?php
@@ -80,10 +76,6 @@
               <td><?php echo $no++; ?></td>
               <td><?php echo $k['no_rak']; ?></td>
               <td><?php echo $k['nama_rak']; ?></td>
-              <td><?php echo $k['user_create']; ?></td>
-              <td><?php echo $k['create_date']; ?></td>
-              <td><?php echo $k['user_update']; ?></td>
-              <td><?php echo $k['update_date']; ?></td>
               <td width="100"><img style="width: 100px;" src="<?php echo base_url() . 'assets/images/' . $k['qr_code']; ?>"></td>
             </tr>
           <?php endforeach;

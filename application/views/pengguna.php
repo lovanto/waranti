@@ -60,10 +60,6 @@ $this->session->userdata('authenticated')
                   <th>Password </th>
                   <th>nama </th>
                   <th>Role(Hak Akses)</th>
-                  <th>User Create</th>
-                  <th>Create Date</th>
-                  <th>User Update</th>
-                  <th>Update Date</th>
                   <th>Aksi </th>
                 </tr>
               </thead>
@@ -77,10 +73,6 @@ $this->session->userdata('authenticated')
                     <td class="text-middle"><?= $s['password']; ?></td>
                     <td class="text-middle"><?= $s['nama_user']; ?></td>
                     <td class="text-middle"><?= $s['nama_level']; ?></td>
-                    <td class="text-middle"><?= $s['user_create']; ?></td>
-                    <td class="text-middle"><?= $s['create_date']; ?></td>
-                    <td class="text-middle"><?= $s['user_update']; ?></td>
-                    <td class="text-middle"><?= $s['update_date']; ?></td>
                     <td class="text-center text-middle"><a href="<?= base_url('page/pengguna_ubah') ?>/<?= $s['id_user']; ?>" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit text-success"></i></a> | <a href="<?= base_url('page/pengguna_hapus') ?>/<?= $s['id_user']; ?>" class="tombol_hapus" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash text-danger"></i></a>
                     </td>
                   </tr>

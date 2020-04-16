@@ -17,7 +17,7 @@ $this->session->userdata('authenticated')
       <div class="card">
         <div class="card-header bg-gray-500">Form Input Detail Part</div>
         <div class="card-body">
-          <form method="post" accept-charset="utf-8" enctype="multipart/form-data" action="<?= base_url('page/detail_tambah'); ?>">
+          <form method="post" accept-charset="utf-8" enctype="multipart/form-data" action="<?= base_url('page_user/detail_tambah'); ?>">
 
             <div class="form-group">
               <label>Nama Karyawan</label>
@@ -153,7 +153,7 @@ $this->session->userdata('authenticated')
                     <td class="text-middle"><?= $s['lpd']; ?></td>
                     <td class="text-middle"><?= $s['nama_rak']; ?></td> 
                     <td><img style="width: 100px;" src="<?php echo base_url().'assets/images/'.$s['qr_code'];?>"></td>
-                    <td class="text-center text-middle"><a href="<?= base_url('page/detail_ubah') ?>/<?= $s['id']; ?>" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit text-success"></i></a> | <a href="<?= base_url('page/detail_hapus') ?>/<?= $s['id']; ?>" class="tombol_hapus" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash text-danger"></i></a> | <a href="<?= base_url('page/laporan_detail') ?>/<?= $s['id']; ?>" data-toggle="tooltip" data-placement="top" title="Cetak"><i class="fas fa-print text-success"></i></a>
+                    <td class="text-center text-middle"><a href="<?= base_url('page/laporan_detail') ?>/<?= $s['id']; ?>" data-toggle="tooltip" data-placement="top" title="Cetak"><i class="fas fa-print text-success"></i></a>
                     </td>
                   </tr>
                 <?php endforeach; ?>
