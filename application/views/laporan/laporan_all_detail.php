@@ -46,22 +46,24 @@
         </div>
         <div class="col-md-5" style="margin-left: 10px; float: right">
             <div style="font-size: 30px;">Laporan Detail Sparepart</div>
-            <div style="font-size: 20px; margin-left: 60px;">PT. Daihatsu</div>
+            <div style="font-size: 20px; margin-left: 60px;">PT. ASTRA INTERNASIONAL TBK- DAIHATSU ASTRA BIZ CENTER BANDUNG</div>
             <!-- <div style="font-size: 20px;">Telp. (022)-7326134</div> -->
         </div>
     </div>
     <div class="minus" style="margin-left: 20px; margin-right: 20px; overflow: auto;">
         <br><br>
         <form action="<?php echo site_url('page/laporan_all_detail'); ?>" method="get">
-            <input type="text" name="cari" class="form-control " id="diprint"
-                placeholder="Nama Teknisi atau Nomor Polisi"
-                value="<?php echo (isset($_GET['cari'])) ? $_GET['cari'] : ''; ?>" style="margin-bottom: 10px;">
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary" id="diprint">Cari Data</button>
-                <a href="<?php echo site_url('page/laporan_all_detail'); ?>" class="btn btn-danger" id="diprint"
-                    style="text-decoration:none; color: black;">Reset</a>
-                <button href="#" onclick="myFunction()" target="_blank" type="submit" id="diprint"
-                    class="btn btn-info diprint">Cetak data</button>
+            <input type="text" name="cari" class="form-control" id="diprint" placeholder="Nama Teknisi atau Nopol" value="<?php echo (isset($_GET['cari'])) ? $_GET['cari'] : ''; ?>">
+            <select name="metode" class="form-control" id="diprint" style="width: 300px; margin-top: 10px; margin-bottom: 10px;" required>
+                <option value="1">Pilih metode print</option>
+                <option value="Harian">Harian</option>
+                <option value="Mingguan">Mingguan</option>
+                <option value="Bulanan">Bulanan</option>
+            </select>
+            <input type="date" name="tanggal" id="diprint" class="form-control" style="width: 300px; margin-bottom: 10px;" value="<?php echo (isset($_GET['tanggal'])) ? $_GET['tanggal'] : ''; ?>">
+            <button type="submit" class="btn btn-primary " id="diprint">Cari Data</button>
+            <a href="<?php echo site_url('page/laporan_all_detail?metode=1'); ?>" class="btn btn-danger" id="diprint" style="text-decoration:none; color: black;">Reset</a>
+            <button href="#" onclick="myFunction()" target="_blank" type="submit" id="diprint" class="btn btn-info diprint">Cetak data</button>
         </form>
         <center>
             <br>
@@ -85,27 +87,27 @@
                 if (count($detail) > 0) {
                     $no = 0;
                     foreach ($detail as $s) : $no++; ?>
-                <tr>
-                    <td class="text-center text-middle"><?= $no; ?></td>
-                    <td class="text-middle"><?= $s['nama_karyawan']; ?></td>
-                    <td class="text-middle"><?= $s['nopol']; ?></td>
-                    <td class="text-middle"><?= $s['model_kendaraan']; ?></td>
-                    <td class="text-middle"><?= $s['vin_rangka']; ?></td>
-                    <td class="text-middle"><?= $s['kilometer']; ?></td>
-                    <td class="text-middle"><?= $s['tgl_perbaikan']; ?></td>
-                    <td class="text-middle"><?= $s['tgl_penyerahan']; ?></td>
-                    <td class="text-middle"><?= $s['no_part']; ?></td>
-                    <td class="text-middle"><?= $s['barcode']; ?></td>
-                    <td class="text-middle"><?= $s['lpd']; ?></td>
-                    <td class="text-middle"><?= $s['nama_rak']; ?></td>
-                    <td><img style="width: 100px;" src="<?php echo base_url() . 'assets/images/' . $s['qr_code']; ?>">
-                    </td>
-                </tr>
-                <?php endforeach;
+                        <tr>
+                            <td class="text-center text-middle"><?= $no; ?></td>
+                            <td class="text-middle"><?= $s['nama_karyawan']; ?></td>
+                            <td class="text-middle"><?= $s['nopol']; ?></td>
+                            <td class="text-middle"><?= $s['model_kendaraan']; ?></td>
+                            <td class="text-middle"><?= $s['vin_rangka']; ?></td>
+                            <td class="text-middle"><?= $s['kilometer']; ?></td>
+                            <td class="text-middle"><?= $s['tgl_perbaikan']; ?></td>
+                            <td class="text-middle"><?= $s['tgl_penyerahan']; ?></td>
+                            <td class="text-middle"><?= $s['no_part']; ?></td>
+                            <td class="text-middle"><?= $s['barcode']; ?></td>
+                            <td class="text-middle"><?= $s['lpd']; ?></td>
+                            <td class="text-middle"><?= $s['nama_rak']; ?></td>
+                            <td><img style="width: 100px;" src="<?php echo base_url() . 'assets/images/' . $s['qr_code']; ?>">
+                            </td>
+                        </tr>
+                    <?php endforeach;
                 } else { ?>
-                <tr>
-                    <td colspan="5" align="center">Tidak Ada Data.</td>
-                </tr>
+                    <tr>
+                        <td colspan="5" align="center">Tidak Ada Data.</td>
+                    </tr>
                 <?php } ?>
             </table>
         </center>
@@ -114,7 +116,7 @@
         echo $this->pagination->create_links();
         ?>
     </div>
-    <div class="row" id="diprint2">
+    <div id="diprint2">
         <div class="col-md-11">
             <div style="font-size: 16px; float: right;">Bandung, <?= date('d-m-Y'); ?></div>
             <br><br><br><br><br>

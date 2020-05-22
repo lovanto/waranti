@@ -16,12 +16,10 @@
                 <input type="text" class="form-control" id="nama_user" name="nama_user" placeholder="Nama user" value="<?=$user['nama_user'];?>" required>
                  <label>Role-(hak-akses)</label>
                  <select name="id_level" class="form-control form-control-user" required>
-                    <option value="-">-pilihan-</option>
+                    <option value="<?=$user['id_level'];?>">-pilihan-</option>
                     <option value= "1" >Admin</option>
-                    <option value= "2" >Checker</option>
-                    <option value= "3" >Owner</option>
-                    <option value= "4" >Pelanggan</option>
-                  </select>
+                    <option value= "2" >User</option>
+                    </select>
                     <input type="hidden" class="form-control" id="user_update" name="user_update"  value="<?=$this->session->userdata('nama_user'); ?>" required>             
                    <input name="update_date" type="hidden" id="update_date" value=" <?php echo date('Y-m-d'); ?> "readonly>
               </div>

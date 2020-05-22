@@ -65,7 +65,7 @@
             $vin_rangka = $row['E'];
             $kilometer = $row['F'];
             // Cek jika semua data tidak diisi
-            if ($nopol == "" && $model == "" && $kategori == "" && $tarif == "")
+            if ($nopol == "" && $model == "" && $tipe_mesin == "" && $model_kendaraan == "")
               continue; // Lewat data pada baris ini (masuk ke looping selanjutnya / baris selanjutnya)
 
             // Cek $numrow apakah lebih dari 1
@@ -73,7 +73,7 @@
             // Jadi dilewat saja, tidak usah diimport
             if ($numrow > 1) {
               // Validasi apakah semua data telah diisi
-              $nopol_td = (!empty($zona)) ? "" : " style='background: #E07171;'"; // Jika NIS kosong, beri warna merah
+              $nopol_td = (!empty($nopol)) ? "" : " style='background: #E07171;'"; // Jika NIS kosong, beri warna merah
 
               $model_td = (!empty($model)) ? "" : " style='background: #E07171;'"; // Jika Nama kosong, beri warna merahnpl
               $tipe_mesin_td = (!empty($tipe_mesin)) ? "" : " style='background: #E07171;'"; // Jika Jenis Kelamin kosong, beri warna merah

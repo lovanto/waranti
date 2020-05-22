@@ -35,7 +35,7 @@
     </div>
 </div>
 <div class="footer">
-    <p>Copyright &copy; <?php echo date('Y'); ?> By Me</p>
+<p color="black">Copyright &copy; <?php echo date('Y'); ?>DAIHATSU ASTRA BIZ CENTER BANDUNG</p>
 </div>
 </body>
 </html>

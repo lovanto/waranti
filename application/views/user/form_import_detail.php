@@ -10,7 +10,7 @@
        <br>
 
        <!-- Buat sebuah tag form dan arahkan action nya ke controller ini lagi -->
-       <form method="post" action="<?php echo base_url("page/form?id=detail"); ?>" enctype="multipart/form-data">
+       <form method="post" action="<?php echo base_url("page_user/form?id=detail"); ?>" enctype="multipart/form-data">
          <!--
                       -- Buat sebuah input type file
                       -- class pull-left berfungsi agar file input berada di sebelah kiri
@@ -31,7 +31,7 @@
           }
 
           // Buat sebuah tag form untuk proses import data ke database
-          echo "<form method='post' action='" . base_url("page/import?id=detail") . "'>";
+          echo "<form method='post' action='" . base_url("page_user/import?id=detail") . "'>";
 
           // Buat sebuah div untuk alert validasi kosong
           echo "<div style='color: red;' id='kosong'>
@@ -40,7 +40,7 @@
 
           echo "<table border='1' cellpadding='8'>
                       <tr>
-                        <th colspan='6'>Preview Data</th>
+                        <th colspan='11'>Preview Data</th>
                       </tr>
                       <tr>
                         <th>Nama Teknisi</th>
@@ -63,19 +63,19 @@
           // $sheet adalah variabel yang dikirim dari controller
           foreach ($sheet as $row) {
             // Ambil data pada excel sesuai Kolom
-            $nama_karyawan=$row['A'];
-            $nopol = $row['B']; // Ambil data NIS
-            $model_kendaraan = $row['C']; // Ambil data nama
-            $vin_rangka = $row['D']; // Ambil data jenis kelamin
-            $kilometer = $row['E']; // Ambil data tarif
+            $nama_karyawan = $row['A']; // Ambil data NIS
+            $nopol = $row['B']; // Ambil data nama
+            $model_kendaraan = $row['C']; // Ambil data jenis kelamin
+            $vin_rangka = $row['D']; // Ambil data vin_rangka
+            $kilometer = $row['E'];
             $tgl_perbaikan = $row['F'];
             $tgl_penyerahan = $row['G'];
             $no_part = $row['H'];
             $barcode = $row['I'];
-            $lpd =$row['J'];
-            $nama_rak=$row['K'];
+            $lpd = $row['J'];
+            $nama_rak = $row['K'];
             // Cek jika semua data tidak diisi
-            if ($nama_karyawan == "" && $nopol == "" && $model_kendaraan == "" && $vin_rangka == "" && $kilometer == "")
+            if ($nama_karyawan == "" && $nopol == "" && $model_kendaraan == "" && $vin_rangka == "")
               continue; // Lewat data pada baris ini (masuk ke looping selanjutnya / baris selanjutnya)
 
             // Cek $numrow apakah lebih dari 1
@@ -83,23 +83,20 @@
             // Jadi dilewat saja, tidak usah diimport
             if ($numrow > 1) {
               // Validasi apakah semua data telah diisi
-              $nama_karyawan_td = (!empty($nama_karyawan)) ? "" : " style='background: #E07171;'"; // Jika NIS kosong, beri warna merah
-              $nopol_td = (!empty($nopol)) ? "" : " style='background: #E07171;'"; // Jika NIS kosong, beri warna merah
+              $nama_karyawan_td = (!empty($zona)) ? "" : " style='background: #E07171;'"; // Jika NIS kosong, beri warna merah
 
-              $model_kendaraan_td = (!empty($model_kendaraan)) ? "" : " style='background: #E07171;'"; // Jika vin_rangka kosong, beri warna merah
-              $vin_rangka_td = (!empty($vin_rangka)) ? "" : " style='background: #E07171;'"; // Jika vin_rangka kosong, beri warna merah
-              $kilometer_td = (!empty($kilometer)) ? "" : " style='background: #E07171;'"; // Jika vin_rangka kosong, beri warna merah
-              $tgl_perbaikan_td = (!empty($tgl_perbaikan)) ? "" : " style='background: #E07171;'"; // Jika NIS kosong, beri warna merah
-              $tgl_penyerahan_td = (!empty($tgl_penyerahan)) ? "" : " style='background: #E07171;'"; // Jika NIS kosong, beri warna merah
-              $no_part_td = (!empty($no_part)) ? "" : " style='background: #E07171;'"; // Jika vin_rangka kosong, beri warna merah
+              $nopol_td = (!empty($nopol)) ? "" : " style='background: #E07171;'"; // Jika Nama kosong, beri warna merahnpl
+              $model_kendaraan_td = (!empty($model_kendaraan)) ? "" : " style='background: #E07171;'"; // Jika Jenis Kelamin kosong, beri warna merah
+              $vin_rangka_td = (!empty($vin_rangka)) ? "" : " style='background: #E07171;'"; // Jika Kilometer kosong, beri warna merah
+              $kilometer_td = (!empty($kilometer)) ? "" : " style='background: #E07171;'"; // Jika Kilometer kosong, beri warna merah
+              $tgl_perbaikan_td = (!empty($tgl_perbaikan)) ? "" : " style='background: #E07171;'"; // Jika Kilometer kosong, beri warna merah
+              $tgl_penyerahan_td = (!empty($tgl_penyerahan)) ? "" : " style='background: #E07171;'"; // Jika Kilometer kosong, beri warna merah
+              $no_part_td = (!empty($no_part)) ? "" : " style='background: #E07171;'"; // Jika Kilometer kosong, beri warna merah
+              $barcode_td = (!empty($barcode)) ? "" : " style='background: #E07171;'"; // Jika Kilometer kosong, beri warna merah
+              $lpd_td = (!empty($lpd)) ? "" : " style='background: #E07171;'"; // Jika Kilometer kosong, beri warna merah
+              $nama_rak_td = (!empty($lpd)) ? "" : " style='background: #E07171;'"; // Jika Kilometer kosong, beri warna merah
               // Jika salah satu data ada yang kosong
-              $barcode_td = (!empty($barcode)) ? "" : " style='background: #E07171;'"; // Jika vin_rangka kosong, beri warna merah
-
-              $lpd_td = (!empty($lpd)) ? "" : " style='background: #E07171;'"; // Jika vin_rangka kosong, beri warna merah
-
-              $nama_rak_td = (!empty($nama_rak)) ? "" : " style='background: #E07171;'"; // Jika vin_rangka kosong, beri warna merah
-            
-              if ($nama_karyawan == "" or $nopol == "" or $model_kendaraan == "" or $vin_rangka == "" or $kilometer == "" ) {
+              if ($nama_karyawan == "" or $nopol == "" or $model_kendaraan == "" or $vin_rangka == "") {
                 $kosong++; // Tambah 1 variabel $kosong
               }
 
@@ -116,7 +113,6 @@
               echo "<td" . $lpd_td . ">" . $lpd . "</td>";
               echo "<td" . $nama_rak_td . ">" . $nama_rak . "</td>";
               echo "</tr>";
-
             }
 
             $numrow++; // Tambah 1 setiap kali looping
@@ -142,7 +138,7 @@
 
             // Buat sebuah tombol untuk mengimport data ke database
             echo "<button type='submit' name='import'>Import</button>";
-            echo "<a href='" . base_url("page/detail") . "'>Cancel</a>";
+            echo "<a href='" . base_url("page_user/detail") . "'>Cancel</a>";
           }
 
           echo "</form>";

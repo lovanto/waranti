@@ -1,0 +1,11 @@
+langkah instalasi web apps
+
+1. instal xampp , 
+2. setelah instalasi xampp buka xampp nya dan click start pada apache dan mysql 
+3. extract file rar yang berisi folder waranti ke drive C:\xampp\htdocs
+3. ekstak database waranti_db
+   a.buka browser masukan url localhost/phpmyadmin
+   b.klik new di sebelah kiri untuk membuat database baru , usahakan namanya sama waranti_db
+   c.klik import lalu choose file dimana file waranti_db.sql (ada di directory C:\xampp\htdocs\waranti)
+   d.klik go 
+5. jalankan apps di browser chrome ketik di url (localhost/waranti)

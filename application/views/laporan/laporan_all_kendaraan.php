@@ -46,7 +46,7 @@
     </div>
     <div class="col-md-5" style="margin-left: 10px; float: right">
       <div style="font-size: 30px;">Laporan Kendaraan</div>
-      <div style="font-size: 20px; margin-left: 60px;">PT. Daihatsu</div>
+      <div style="font-size: 20px; margin-left: 60px;">PT. ASTRA INTERNASIONAL TBK- DAIHATSU ASTRA BIZ CENTER BANDUNG</div>
       <!-- <div style="font-size: 20px;">Telp. (022)-7326134</div> -->
     </div>
   </div>
@@ -99,7 +99,7 @@
     echo $this->pagination->create_links();
     ?>
   </div>
-  <div class="row" id="diprint2">
+  <div id="diprint2">
     <div class="col-md-11">
       <div style="font-size: 16px; float: right;">Bandung, <?= date('d-m-Y'); ?></div>
       <br><br><br><br><br>

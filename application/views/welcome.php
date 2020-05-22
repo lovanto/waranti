@@ -5,96 +5,103 @@ $this->session->userdata('authenticated')
 //$this->session->set_userdata($session);
 ?>
 <!-- Breadcrumbs-->
-    <!-- Breadcrumbs-->
-   
-     <div class="content">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6">
-              <div class="card card-stats">
-                <div class="card-header card-header-warning card-header-icon">
-                  <div class="card-icon">
-                    <i class="material-icons">content_copy</i>
-                  </div>
-                  <p class="card-category">Used Space</p>
-                  <h3 class="card-title">49/50
-                    <small>GB</small>
-                  </h3>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons text-danger">warning</i>
-                    <a href="javascript:;">Get More Space...</a>
-                  </div>
-                </div>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="#">Dashboard</a>
+  </li>
+  <li class="breadcrumb-item active">Overview</li>
+</ol>
+<!-- Icon Cards-->
+<div class="container">
+  <div class="row">
+    <div class="col-xl-3 col-md-3 mb-2">
+      <div class="card border-left-primary shadow h-100 py-2 bg-primary">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-3">
+              <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Total Kendaraan</div>
+              <div class="h5 mb-0 font-weight-bold text-white"><?php echo $this->UserModel->get_data2('kendaraan')->num_rows(); ?>
               </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-              <div class="card card-stats">
-                <div class="card-header card-header-success card-header-icon">
-                  <div class="card-icon">
-                    <i class="material-icons">store</i>
-                  </div>
-                  <p class="card-category">Revenue</p>
-                  <h3 class="card-title">$34,245</h3>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons">date_range</i> Last 24 Hours
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-              <div class="card card-stats">
-                <div class="card-header card-header-danger card-header-icon">
-                  <div class="card-icon">
-                    <i class="material-icons">info_outline</i>
-                  </div>
-                  <p class="card-category">Fixed Issues</p>
-                  <h3 class="card-title">75</h3>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons">local_offer</i> Tracked from Github
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-              <div class="card card-stats">
-                <div class="card-header card-header-info card-header-icon">
-                  <div class="card-icon">
-                    <i class="fa fa-twitter"></i>
-                  </div>
-                  <p class="card-category">Followers</p>
-                  <h3 class="card-title">+245</h3>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons">update</i> Just Updated
-                  </div>
-                </div>
-              </div>
+            <div class="col-auto">
+              <i class="fa fa-car fa-3x text-white "></i>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-md-3 mb-2">
+      <div class="card border-left-danger shadow h-100 py-2 bg-danger">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2 ">
+              <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Total Karyawan</div>
+              <div class="h5 mb-0 font-weight-bold text-white">
+                <?php echo $this->UserModel->get_data2('karyawan')->num_rows(); ?>
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fa fa-child fa-3x text-white  "></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-md-3 mb-2">
+      <div class="card border-left-danger shadow h-100 py-2 bg-danger">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2 ">
+              <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Total Backup detail Part </div>
+              <div class="h5 mb-0 font-weight-bold text-white">
+                <?php echo $this->UserModel->get_data2('detail')->num_rows(); ?>
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fa fa-taxi fa-3x text-white  "></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <!-- Area Chart Example-->
-    <div class="card mb-3" style="margin-top: 20px;">
+    <div class="col-xl-3 col-md-3 mb-2">
+      <div class="card border-left-warning shadow h-100 py-2 bg-warning">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-3">
+              <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Total Pengguna APP</div>
+              <div class="h5 mb-0 font-weight-bold text-white"> <?php echo $this->UserModel->get_data2('user')->num_rows(); ?></div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-book-reader fa-3x text-white"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+   <div style="position:fixed; right:20px; bottom:20px; z-index: 1000;">
+    <a href="https://wa.me/6285871186153?text=Hai, PT. ASTRA INTERNASIONAL TBKDAIHATSU ASTRA BIZ CENTER
+BANDUNG , saya sedang mempunyai masalah , apakah anda bisa membantu ? (ini pesan otomatis)">
+      <button style="background:#32C03C;vertical-align:center;height:36px;border-radius:5px">
+        <img src="https://web.whatsapp.com/img/favicon/1x/favicon.png">&nbsp; Whatsapp Kami</button></a>
+  </div>
+  <!-- Area Chart Example-->
+  <div class="card mb-3">
     <div class="card-header">
       <h1>Selamat datang <?= $this->session->userdata('nama_user'); ?></h1>
       <?php
+        
+    $save  = 'C:/xampp/htdocs/waranti/backup_data/'; // dir name backup output destination
+    echo $save;
       ?>
       <h5>Anda masuk sebagai <i>
           <?php
           if ($this->session->userdata('id_level') == 1) {
             echo "Admin";
           } else if ($this->session->userdata('id_level') == 2) {
-            echo "Checker";
-          } else if ($this->session->userdata('id_level') == 3) {
-            echo "Owner";
-          } else if ($this->session->userdata('id_level') == 4) {
-            echo "Pelanggan";
+            echo "User";
           } else {
             echo "Who Are You?";
           }

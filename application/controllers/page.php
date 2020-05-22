@@ -287,8 +287,10 @@ class Page extends MY_Controller
   }
   public function laporan_all_Detail()
   {
-    $keyword = $this->input->get('cari', TRUE);
-    $data['detail'] = $this->UserModel->getDatadetail3($keyword); //mencari data karyawan berdasarkan 
+    $keyword = $this->input->get('cari', TRUE); //mengambil nilai dari form input cari
+    $metode = $this->input->get('metode', TRUE);
+    $tanggal = $this->input->get('tanggal', TRUE);
+    $data['detail'] = $this->UserModel->getDatadetail3($keyword, $metode, $tanggal); //mencari data karyawan berdasarkan 
     $this->load->view('templates/header');
     $this->load->view('laporan/laporan_all_detail', $data); //menampilkan data yang sudah dicari
     $this->load->view('templates/footer');
@@ -791,4 +793,44 @@ class Page extends MY_Controller
     }
     // Redirect ke halaman awal (ke controller siswa fungsi index)
   }
+   # pencarian data dan laporan checker
+  public function cari_detail(){
+    $keyword = $this->input->get('cari', TRUE); //mengambil nilai dari form input cari
+    $data['checker'] = $this->UserModel->cari_detail($keyword); //mencari data karyawan berdasarkan inputan
+    $this->load->view('templates/header');
+    // $this->load->view('templates/sidebar');
+    $this->load->view('laporan/laporan_detailpart', $data); //menampilkan data yang sudah dicari
+    $this->load->view('templates/footer');
+  }
+
+   # untuk laporan checker
+  public function laporan_detail_part()
+    {
+        if(isset($_POST['submit']))
+        {
+            $tanggal1=  $this->input->post('tanggal1');
+            $tanggal2=  $this->input->post('tanggal2');
+            $data['detailpart']=  $this->UserModel->laporan_berkala($tanggal1,$tanggal2);
+             $this->load->view('templates/header');
+             // $this->load->view('templates/sidebar');
+             $this->load->view('laporan/laporan_detailpart',$data);
+             $this->load->view('templates/footer');
+        }
+        elseif(isset($_POST['submit2']))
+        {
+            $tanggal3=  $this->input->post('tanggal3');
+            $tanggal4=  $this->input->post('tanggal4');
+            $data['detailpart']=  $this->UserModel->laporan_berkala1($tanggal3,$tanggal4);
+            $this->load->view('laporan/cetak_detail',$data);
+        }
+        else
+        {
+            $data['detailpart']=  $this->UserModel->laporan_detail_default();
+            $this->load->view('templates/header');
+            // $this->load->view('templates/sidebar');
+            $this->load->view('laporan/laporan_detailpart',$data);
+            $this->load->view('templates/footer');
+        }
+
+   }
 }

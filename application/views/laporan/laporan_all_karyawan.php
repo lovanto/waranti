@@ -46,7 +46,7 @@
     </div>
     <div class="col-md-5" style="margin-left: 10px; float: right">
       <div style="font-size: 30px;">Laporan Karyawan</div>
-      <div style="font-size: 20px; margin-left: 60px;">PT. Daihatsu</div>
+      <div style="font-size: 20px; margin-left: 60px;">PT. ASTRA INTERNASIONAL TBK- DAIHATSU ASTRA BIZ CENTER BANDUNG</div>
       <!-- <div style="font-size: 20px;">Telp. (022)-7326134</div> -->
     </div>
   </div>
@@ -71,7 +71,7 @@
           <th>Alamat</th>
           <th>Nomor Telp.</th>
           <th>No. KTP</th>
-          <th>Tanggal Masuk</th>
+          <!-- <th>Tanggal Masuk</th> -->
           <th>Status Karyawan</th>
           <th>QR Code</th>
         </tr>
@@ -88,7 +88,7 @@
               <td><?php echo $k['alamat']; ?></td>
               <td><?php echo $k['no_telp']; ?></td>
               <td><?php echo $k['no_ktp']; ?></td>
-              <td><?php echo $k['tgl_masuk']; ?></td>
+              <!-- <td><?php echo $k['tgl_masuk']; ?></td> -->
               <td><?php echo $k['status_karyawan']; ?></td>
               <td width="100"><img style="width: 100px;" src="<?php echo base_url() . 'assets/images/' . $k['qr_code']; ?>"></td>
             </tr>
@@ -105,7 +105,7 @@
     echo $this->pagination->create_links();
     ?>
   </div>
-  <div class="row" id="diprint2">
+  <div id="diprint2">
     <div class="col-md-11">
       <div style="font-size: 16px; float: right;">Bandung, <?= date('d-m-Y'); ?></div>
       <br><br><br><br><br>

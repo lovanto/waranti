@@ -479,20 +479,60 @@ class UserModel extends CI_Model
 	{
 		return $this->db->get_where('detail', ['id' => $id])->result_array();
 	}
-	public function getDatadetail3($id)
+	public function getDatadetail3($keyword, $metode, $tanggal)
 	{
-		if ($id != NULL) {
-			$this->db->like('nama_karyawan', $id)->or_like('nopol', $id);
+		if ($metode == "1") {
+			$this->db->like('nama_karyawan', $keyword)->or_like('nopol', $keyword); //mencari data yang serupa dengan keyword
 			return $this->db->get('detail')->result_array();
+		} else if ($metode != NULL) {
+			if ($metode == "Harian") {
+				$this->db->where('tgl_perbaikan', $tanggal);
+				return $this->db->get('detail')->result_array();
+			} else if ($metode == "Mingguan") {
+				$this->db->where('tgl_perbaikan >=', $tanggal);
+				$this->db->where('tgl_perbaikan <=', date('Y-m-d', strtotime($tanggal . ' + 7 days')));
+				return $this->db->get('detail')->result_array();
+			} else if ($metode == "Bulanan") {
+				$this->db->where('tgl_perbaikan >=', $tanggal);
+				$this->db->where('tgl_perbaikan <=', date('Y-m-d', strtotime($tanggal . ' +30 days')));
+				return $this->db->get('detail')->result_array();
+			} else {
+				return "GOING WRONG!!";
+			}
 		} else {
+			$this->db->like('nama_karyawan', $keyword)->or_like('nopol', $keyword); //mencari data yang serupa dengan keyword
 			return $this->db->get('detail')->result_array();
 		}
 	}
 	public function getDatadetail4($id, $user)
 	{
 		if ($id != NULL) {
-			$this->db->like('tgl_perbaikan', $id)->or_like('nopol', $id);
+			$this->db->like('tgl_perbaikan', $id);
 			return $this->db->get_where('detail', ['user_create' => $user])->result_array();
+		} else {
+			return $this->db->get_where('detail', ['user_create' => $user])->result_array();
+		}
+	}
+	public function getDatadetail5($user, $metode, $tanggal)
+	{
+		if ($metode == "1") {
+			return $this->db->get_where('detail', ['user_create' => $user])->result_array();
+		} else if ($metode != NULL) {
+			if ($metode == "Harian") {
+				$this->db->where('tgl_perbaikan', $tanggal);
+				return $this->db->get_where('detail', ['user_create' => $user])->result_array();
+			} else if ($metode == "Mingguan") {
+				$this->db->where('tgl_perbaikan >=', $tanggal);
+				$this->db->where('tgl_perbaikan <=', date('Y-m-d', strtotime($tanggal . ' + 7 days')));
+
+				return $this->db->get_where('detail', ['user_create' => $user])->result_array();
+			} else if ($metode == "Bulanan") {
+				$this->db->where('tgl_perbaikan >=', $tanggal);
+				$this->db->where('tgl_perbaikan <=', date('Y-m-d', strtotime($tanggal . ' +30 days')));
+				return $this->db->get_where('detail', ['user_create' => $user])->result_array();
+			} else {
+				return "GOING WRONG!!";
+			}
 		} else {
 			return $this->db->get_where('detail', ['user_create' => $user])->result_array();
 		}
@@ -546,5 +586,26 @@ class UserModel extends CI_Model
 			return $return;
 		}
 	}
+		//model untuk laporan periode pelanggan
+	public function cari_detail($keyword){
+	    $this->db->like('nama_karyawan', $keyword)->or_like('nopol', $keyword)->or_like('deskripsi', $keyword)->or_like('nama_rak', $keyword)->or_like('model_kendaraan', $keyword); //mencari data yang serupa dengan keyword
+	    return $this->db->get('detailpart')->result();
+	 }
+
+	public function laporan_detail_default()
+    {
+        return $this->db->get('detailpart')->result();
+    }
+    
+    public function laporan_berkala($tanggal1,$tanggal2)
+    {
+        $query="SELECT * from detailpart where tgl_perbaikan between '$tanggal1' and '$tanggal2'";
+        return $this->db->query($query);
+    }
+    public function laporan_berkala1($tanggal1,$tanggal2)
+    {
+        $query="SELECT * from detailpart where tgl_perbaikan between '$tanggal1' and '$tanggal2'";
+        return $this->db->query($query);
+    }
 }
 // select * from (nama_tabel) where (nama_field_yang_akan_difilter) between ‘tanggal awal’ and ‘tanggal akhir’

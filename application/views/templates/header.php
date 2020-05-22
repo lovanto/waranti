@@ -49,9 +49,9 @@
 <body id="page-top">
 
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-      <a class="sidebar-brand d-flex align-items-center justify-content-center"class="diprint" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center"class="diprint" href="<?= base_url('page/welcome'); ?>">
         <div class="sidebar-brand-icon rotate-n-20">
-          <i class="fa fa-database"></i>
+          <i class="fa fa-rss-square"></i>
         </div>
         <div class="sidebar-brand-text mx-3">Waranti Sparepart</div>
       </a>
@@ -111,7 +111,7 @@
       </li>
        <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-fw fa-folder"></i>
+          <i class="fa fa-archive"></i>
           <span>Master</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
@@ -124,7 +124,7 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-fw fa-folder"></i>
+          <i class="fa fa-registered"></i>
           <span>Transaksi</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
@@ -134,7 +134,7 @@
       </li>
       <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-fw fa-address-book"></i>
+            <i class="fa fa-print"></i>
             <span>Laporan</span></a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
               <h6 class="dropdown-header">Laporan Master :</h6>
@@ -145,11 +145,13 @@
                 <a class="dropdown-item fa fa-user" href="<?php echo base_url('page/laporan_all_pengguna'); ?>">Laporan Pengguna</a>
               <h6 class="dropdown-header">Laporan Transaksi :</h6>
                 <a class="dropdown-item fa fa-envelope" href="<?php echo base_url('page/laporan_all_detail'); ?>">Laporan Detail Part</a>
+              <h6 class="dropdown-header">Laporan Periode :</h6>
+                <a class="dropdown-item fa fa-envelope" href="<?php echo base_url('page/laporan_detail_part'); ?>">Laporan Part Periode</a>
             </div>
       </li> 
       <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url('backup');?>">
-          <i class="fas fa-fw fa-save"></i>
+          <i class="fa fa-server"></i>
           <span>Backup</span></a>
       </li>
       <li class="nav-item">

@@ -98,9 +98,9 @@ $this->session->userdata('authenticated')
               <input type="hidden" class="form-control" id="user_create" name="user_create" value="<?= $this->session->userdata('nama_user'); ?>" required>
               <input name="create_date" type="hidden" id="create_date" value=" <?php echo date('Y-m-d'); ?> " readonly>
             </div>
-            <div class="card-footer">
-              <b><a href="<?= base_url('page/form?id=detail'); ?>">import data</a></b>
-            </div>
+           <!--  <div class="card-footer">
+              <b><a href="<?= base_url('page_user/form?id=detail'); ?>">import data</a></b>
+            </div> -->
             <button type="submit" class="btn btn-primary"><i class="fas fa-save">&nbsp;&nbsp;Simpan</i></button>
           </form>
         </div>
@@ -117,7 +117,7 @@ $this->session->userdata('authenticated')
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-              <thead class="bg-info text-white">
+            <thead class="bg-info text-white">
                 <tr class="text-center">
                   <th>No </th>
                   <th>Nama Teknisi</th>
@@ -131,6 +131,10 @@ $this->session->userdata('authenticated')
                   <th>Barcode</th>
                   <th>LPD</th>
                   <th>Nama Rak</th>
+                  <th>Create Date</th>
+                  <th>Create By</th>
+                  <th>Update Date</th>
+                  <th>Update By</th>
                   <th>QR CODE</th>
                   <th>Aksi </th>
                 </tr>
@@ -152,8 +156,12 @@ $this->session->userdata('authenticated')
                     <td class="text-middle"><?= $s['barcode']; ?></td>
                     <td class="text-middle"><?= $s['lpd']; ?></td>
                     <td class="text-middle"><?= $s['nama_rak']; ?></td> 
+                    <td class="text-middle"><?= $s['create_date']; ?></td>
+                    <td class="text-middle"><?= $s['user_create']; ?></td>
+                    <td class="text-middle"><?= $s['update_date']; ?></td>
+                    <td class="text-middle"><?= $s['user_update']; ?></td> 
                     <td><img style="width: 100px;" src="<?php echo base_url().'assets/images/'.$s['qr_code'];?>"></td>
-                    <td class="text-center text-middle"><a href="<?= base_url('page/laporan_detail') ?>/<?= $s['id']; ?>" data-toggle="tooltip" data-placement="top" title="Cetak"><i class="fas fa-print text-success"></i></a>
+                    <td class="text-center text-middle"><a href="<?= base_url('page_user/laporan_detail') ?>/<?= $s['id']; ?>" data-toggle="tooltip" data-placement="top" title="Cetak"><i class="fas fa-print text-success"></i></a>
                     </td>
                   </tr>
                 <?php endforeach; ?>

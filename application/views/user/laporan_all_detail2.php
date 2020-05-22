@@ -52,10 +52,16 @@
     </div>
     <div class="minus" style="margin-left: 20px; margin-right: 20px; overflow: auto;">
         <br><br>
-        <form action="<?php echo site_url('page_user/laporan_all_detail'); ?>" method="get">
-            <input type="text" name="cari" class="form-control" id="diprint" placeholder="Tanggal Perbaikan" value="<?php echo (isset($_GET['cari'])) ? $_GET['cari'] : ''; ?>">
-            <br><button type="submit" class="btn btn-primary" id="diprint">Cari Data</button>
-      <a href="<?php echo site_url('page_user/laporan_all_detail'); ?>" class="btn btn-danger" id="diprint" style="text-decoration:none; color: black;">Reset</a>
+        <form action="<?php echo site_url('page_user/laporan_all_detail2'); ?>" method="get">
+            <select name="metode" class="form-control" id="diprint" style="width: 300px; margin-top: 10px; margin-bottom: 10px;" required>
+                <option value="1">Pilih metode print</option>
+                <option value="Harian">Harian</option>
+                <option value="Mingguan">Mingguan</option>
+                <option value="Bulanan">Bulanan</option>
+            </select>
+            <input type="date" name="tanggal" id="diprint" class="form-control" style="width: 300px; margin-bottom: 10px;" value="<?php echo (isset($_GET['tanggal'])) ? $_GET['tanggal'] : ''; ?>">
+            <button type="submit" class="btn btn-primary " id="diprint">Cari Data</button>
+            <a href="<?php echo site_url('page_user/laporan_all_detail2?metode=1'); ?>" class="btn btn-danger" id="diprint" style="text-decoration:none; color: black;">Reset</a>
             <button href="#" onclick="myFunction()" target="_blank" type="submit" id="diprint" class="btn btn-info diprint">Cetak data</button>
         </form>
         <center>

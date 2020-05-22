@@ -73,7 +73,7 @@
             $tgl_masuk = $row['I'];
             $status_karyawan = $row['J'];
             // Cek jika semua data tidak diisi
-            if ($npk == "" && $nama_karyawan == "" && $kategori == "" && $tarif == "")
+            if ($npk == "" && $nama_karyawan == "" && $jk == "" && $alamat == "")
               continue; // Lewat data pada baris ini (masuk ke looping selanjutnya / baris selanjutnya)
 
             // Cek $numrow apakah lebih dari 1

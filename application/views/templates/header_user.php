@@ -47,15 +47,15 @@
 <body id="page-top">
 
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" class="diprint" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" class="diprint" href="<?= base_url('page_user/welcome'); ?>">
       <div class="sidebar-brand-icon rotate-n-20">
-        <i class="fa fa-database"></i>
+        <i class="fa fa-rss-square"></i>
       </div>
       <div class="sidebar-brand-text mx-3">Waranti Sparepart</div>
     </a>
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
       <i class="fas fa-bars"></i>
-    </button>
+    </button><?= base_url('page_user/welcome'); ?>
 
     <!-- Navbar Search -->
     <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -104,7 +104,7 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-fw fa-folder"></i>
+          <i class="fa fa-registered"></i>
           <span>Transaksi</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
@@ -114,11 +114,12 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-fw fa-address-book"></i>
+          <i class="fa fa-print"></i>
           <span>Laporan</span></a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <h6 class="dropdown-header">Laporan Transaksi :</h6>
-          <a class="dropdown-item fa fa-envelope" href="<?php echo base_url('page_user/laporan_all_detail'); ?>">Laporan Detail Part</a>
+          <a class="dropdown-item fa fa-paper-plane" href="<?php echo base_url('page_user/laporan_all_detail'); ?>">Laporan Detail Part</a>
+          <a class="dropdown-item fa fa-paper-plane" href="<?php echo base_url('page_user/laporan_all_detail2'); ?>">Laporan Detail Part <br>By Date</a>
         </div>
       </li>
       <li class="nav-item">

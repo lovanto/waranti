@@ -30,10 +30,8 @@ $this->session->userdata('authenticated')
               <select name="id_level" class="form-control form-control-user" required>
                 <option value="-">-pilihan-</option>
                 <option value="1">Admin</option>
-                <option value="2">Checker</option>
-                <option value="3">Owner</option>
-                <option value="4">Pelanggan</option>
-              </select>
+                <option value="2">User</option>
+               </select>
               <input type="hidden" class="form-control" id="user_create" name="user_create" value="<?= $this->session->userdata('nama_user'); ?>" required>
               <input name="create_date" type="hidden" id="create_date" value=" <?php echo date('Y-m-d'); ?> " readonly>
             </div>

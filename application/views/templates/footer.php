@@ -4,7 +4,7 @@
       <footer class="sticky-footer">
         <div class="container my-auto diprint" >
           <div class="copyright text-center my-auto">
-            <span>Copyright © danihamdani866@gmail.com 2020</span>
+            <span>Copyright © DAIHATSU ASTRA BIZ CENTER BANDUNG 2020</span>
           </div>
         </div>
       </footer>

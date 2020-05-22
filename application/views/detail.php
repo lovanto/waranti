@@ -74,10 +74,19 @@ $this->session->userdata('authenticated')
                   echo '<option>---Pilih no_part----</option>';
                   while ($row = mysqli_fetch_array($result)) {
                     echo '<option value="' . $row['no_part'] . '">' . $row['no_part'] . '</option>';
-                    $jsArray .= "Nama_prd1['" . $row['no_part'] . "'] = {name:'" . addslashes($row['tarif']) . "',desc:'" . addslashes($row['kategori']) . "'};";
+                    $jsArray .= "Nama_prd1['" . $row['no_part'] . "'] = {names:'" . addslashes($row['deskripsi']) . "',desc:'" . addslashes($row['kategori']) . "'};";
                   }
                   echo '</select>';
                   ?>
+                <script type="text/javascript">
+                  <?php echo $jsArray; ?>
+
+                  function changeValue(id) {
+                    document.getElementById('deskripsi').value = Nama_prd1[id].names;
+                  };
+                </script>
+                 <label>Nama Part</label>
+                <input type="text" class="form-control form-control-user" id="deskripsi" name="deskripsi" placeholder="Masukan deskripsi" required>
                 <label>Barcode</label>
                 <input type="text" class="form-control form-control-user" id="barcode" name="barcode" placeholder="Masukan Barcode" required>
                 <label>LPD</label>
@@ -98,9 +107,9 @@ $this->session->userdata('authenticated')
               <input type="hidden" class="form-control" id="user_create" name="user_create" value="<?= $this->session->userdata('nama_user'); ?>" required>
               <input name="create_date" type="hidden" id="create_date" value=" <?php echo date('Y-m-d'); ?> " readonly>
             </div>
-            <div class="card-footer">
+           <!--  <div class="card-footer">
               <b><a href="<?= base_url('page/form?id=detail'); ?>">import data</a></b>
-            </div>
+            </div> -->
             <button type="submit" class="btn btn-primary"><i class="fas fa-save">&nbsp;&nbsp;Simpan</i></button>
           </form>
         </div>
@@ -131,6 +140,10 @@ $this->session->userdata('authenticated')
                   <th>Barcode</th>
                   <th>LPD</th>
                   <th>Nama Rak</th>
+                  <th>Create Date</th>
+                  <th>Create By</th>
+                  <th>Update Date</th>
+                  <th>Update By</th>
                   <th>QR CODE</th>
                   <th>Aksi </th>
                 </tr>
@@ -152,6 +165,10 @@ $this->session->userdata('authenticated')
                     <td class="text-middle"><?= $s['barcode']; ?></td>
                     <td class="text-middle"><?= $s['lpd']; ?></td>
                     <td class="text-middle"><?= $s['nama_rak']; ?></td> 
+                    <td class="text-middle"><?= $s['create_date']; ?></td>
+                    <td class="text-middle"><?= $s['user_create']; ?></td>
+                    <td class="text-middle"><?= $s['update_date']; ?></td>
+                    <td class="text-middle"><?= $s['user_update']; ?></td> 
                     <td><img style="width: 100px;" src="<?php echo base_url().'assets/images/'.$s['qr_code'];?>"></td>
                     <td class="text-center text-middle"><a href="<?= base_url('page/detail_ubah') ?>/<?= $s['id']; ?>" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit text-success"></i></a> | <a href="<?= base_url('page/detail_hapus') ?>/<?= $s['id']; ?>" class="tombol_hapus" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash text-danger"></i></a> | <a href="<?= base_url('page/laporan_detail') ?>/<?= $s['id']; ?>" data-toggle="tooltip" data-placement="top" title="Cetak"><i class="fas fa-print text-success"></i></a>
                     </td>
